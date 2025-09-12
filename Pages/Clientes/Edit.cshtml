@@ -1,0 +1,37 @@
+@page "{id:int}" 
+@model PD1.Pages.Clientes.EditModel
+@{
+    ViewData["Title"] = "Editar Cliente";
+}
+<div class="container mt-4">
+    <h2>Editar Cliente</h2>
+    <form method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="Cliente.ClienteID" />
+        <div class="mb-3">
+            <label asp-for="Cliente.NombreCliente" class="form-label"></label>
+            <input asp-for="Cliente.NombreCliente" class="form-control" />
+            <span asp-validation-for="Cliente.NombreCliente" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Cliente.Email" class="form-label"></label>
+            <input asp-for="Cliente.Email" class="form-control" />
+            <span asp-validation-for="Cliente.Email" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Cliente.Telefono" class="form-label"></label>
+            <input asp-for="Cliente.Telefono" class="form-control" />
+            <span asp-validation-for="Cliente.Telefono" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Cliente.Direccion" class="form-label"></label>
+            <input asp-for="Cliente.Direccion" class="form-control" />
+            <span asp-validation-for="Cliente.Direccion" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+        <a asp-page="Index" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

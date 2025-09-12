@@ -1,0 +1,56 @@
+@page
+@model PD1.Pages.Productos.IndexModel
+@{
+    ViewData["Title"] = "Productos";
+}
+<div class="container mt-4">
+    <h2>Productos</h2>
+    <form method="get" class="row g-3 mb-3">
+        <div class="col-auto">
+            <input type="text" name="searchString" value="@Model.CurrentFilter" class="form-control" placeholder="Buscar por nombre..." />
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary">Buscar</button>
+            <a asp-page="Create" class="btn btn-success">Agregar Producto</a>
+        </div>
+    </form>
+    <table class="table table-striped table-bordered table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Precio</th>
+                <th>Stock</th>
+                <!-- ELIMINAR ESTAS COLUMNAS QUE YA NO EXISTEN -->
+                <!-- <th>Categoría</th> -->
+                <!-- <th>Proveedor</th> -->
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Productos)
+            {
+                <tr>
+                    <td>@item.NombreProducto</td>
+                    <td>@item.Descripcion</td>
+                    <td>@item.Precio.ToString("C")</td>
+                    <td>@item.Stock</td>
+                    <td>
+                        <a asp-page="Edit" asp-route-id="@item.ProductoID" class="btn btn-sm btn-warning">Editar</a>
+                        <a asp-page="Delete" asp-route-id="@item.ProductoID" class="btn btn-sm btn-danger">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <nav>
+        <ul class="pagination">
+            @for (int i = 1; i <= Model.TotalPages; i++)
+            {
+                <li class="page-item @(i == Model.PageIndex ? "active" : "")">
+                    <a class="page-link" href="?pageIndex=@i&searchString=@Model.CurrentFilter">@i</a>
+                </li>
+            }
+        </ul>
+    </nav>
+</div>

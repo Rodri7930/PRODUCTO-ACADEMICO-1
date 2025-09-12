@@ -1,0 +1,36 @@
+@page
+@model PD1.Pages.Proveedores.CreateModel
+@{
+    ViewData["Title"] = "Agregar Proveedor";
+}
+<div class="container mt-4">
+    <h2>Agregar Proveedor</h2>
+    <form method="post">
+        <div asp-validation-summary="All" class="alert alert-danger"></div>
+        <div class="mb-3">
+            <label asp-for="Proveedor.NombreProveedor" class="form-label"></label>
+            <input asp-for="Proveedor.NombreProveedor" class="form-control" />
+            <span asp-validation-for="Proveedor.NombreProveedor" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Proveedor.ContactoEmail" class="form-label"></label>
+            <input asp-for="Proveedor.ContactoEmail" class="form-control" />
+            <span asp-validation-for="Proveedor.ContactoEmail" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Proveedor.Telefono" class="form-label"></label>
+            <input asp-for="Proveedor.Telefono" class="form-control" />
+            <span asp-validation-for="Proveedor.Telefono" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Proveedor.Direccion" class="form-label"></label>
+            <input asp-for="Proveedor.Direccion" class="form-control" />
+            <span asp-validation-for="Proveedor.Direccion" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-success">Guardar</button>
+        <a asp-page="Index" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

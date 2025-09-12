@@ -1,0 +1,26 @@
+@page
+@model PD1.Pages.Categorias.CreateModel
+@{
+    ViewData["Title"] = "Agregar Categoría";
+}
+<div class="container mt-4">
+    <h2>Agregar Categoría</h2>
+    <form method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="mb-3">
+            <label asp-for="Categoria.NombreCategoria" class="form-label"></label>
+            <input asp-for="Categoria.NombreCategoria" class="form-control" />
+            <span asp-validation-for="Categoria.NombreCategoria" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Categoria.Descripcion" class="form-label"></label>
+            <textarea asp-for="Categoria.Descripcion" class="form-control"></textarea>
+            <span asp-validation-for="Categoria.Descripcion" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-success">Guardar</button>
+        <a asp-page="Index" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
